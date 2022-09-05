@@ -1,0 +1,64 @@
+body {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.main-container {
+	max-width: 1100px;
+	flex-grow: 1;
+	overflow: hidden;
+}
+
+.friend-card {
+	width: 150px;
+	height: 160px;
+	text-align: center;
+	border: 1px solid gray;
+	padding: 3px;
+	box-sizing: content-box;
+	border-radius: 5px;
+	margin: 0 10px 10px 0;
+	text-decoration: none;
+	overflow: hidden;
+}
+
+.friend-card__avatar {
+	width: 150px;
+	max-height: 112px;
+}
+
+.chat-item {
+	text-decoration: none;
+	color: inherit;
+}
+
+.chat-avatar {
+	width: 75px;
+	height: 75px;
+	border-radius: 100px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.chat-message {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.portfolio-avatar {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	overflow: hidden;
+	height: 190px;
+}
+
+.portfolio-avatar img {
+	height: 100%;
+	position: absolute;
+}

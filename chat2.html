@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Чат</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+	<link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+	<!-- Main Header -->
+	<nav class="navbar navbar-expand-lg bg-dark">
+		<div class="container main-container">
+			<div>
+				<a class="navbar-brand text-bg-dark" href="/">ConstCode</a>
+				<a class="btn btn-outline-primary" href="/users.html">Пользователи</a>
+			</div>
+			<button class="btn btn-danger d-none" data-action="signout">Выход</button>
+		</div>
+	</nav>
+	<!-- Main Header -->
+
+	<!-- Main Conteiner -->
+	<div class="container main-container pt-2">
+		<div class="row h-100">
+			<!-- Menu -->
+			<div class="col-3">
+				<div class="list-group">
+					<a href="/profile.html" class="list-group-item list-group-item-action" aria-current="true">
+						Моя страница
+					</a>
+					<a href="/friends.html" class="list-group-item list-group-item-action">Друзья</a>
+					<a href="/chat.html" class="list-group-item list-group-item-action active">Чат
+						<span
+							class="d-none position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+						</span></a>
+					<a href="/setting.html" class="list-group-item list-group-item-action">Настройки</a>
+				</div>
+			</div>
+			<!-- Menu -->
+
+			<!-- Content -->
+			<div class="col-9 h-100 d-flex flex-column pb-3">
+				<!-- Список переписок -->
+				<div class="d-none">
+					<ul class="list-group">
+						<!-- Друг по переписке -->
+						<li class="list-group-item">
+							<div class="row chat-item">
+								<div class="col-2 chat-avatar">
+									<img src="/sets/hair-style-street-fashion-beautiful-girl.jpg" alt="" />
+								</div>
+								<div class="col-10">
+									<div class="d-flex flex-row justify-content-between">
+										<a class="row chat-item" href="/profile.html">
+											<h4>Оксана Беляева</h4>
+										</a>
+
+										<span>16 августа 2022 г., 12:35</span>
+									</div>
+
+									<p class="chat-message">
+										Привет! Как дела? Куда ты пропал?
+										Знаешь как сдела дз на платформе?
+									</p>
+								</div>
+							</div>
+						</li>
+						<!-- Друг по переписке -->
+
+						<!-- Друг по переписке -->
+						<li class="list-group-item">
+							<div class="row chat-item">
+								<div class="col-2 chat-avatar">
+									<img src="/sets/portrait-of-cheerful-caucasian-man.jpg" alt="" />
+								</div>
+								<div class="col-10">
+									<div class="d-flex flex-row justify-content-between">
+										<a class="row chat-item" href="/profile.html">
+											<h4>Максим Вечных</h4>
+										</a>
+
+										<span>16 августа 2022 г., 12:35</span>
+									</div>
+
+									<p class="chat-message">
+										Привет! Как дела? Куда ты пропал?
+										Знаешь как сдела дз на платформе?
+									</p>
+								</div>
+							</div>
+						</li>
+						<!-- Друг по переписке -->
+					</ul>
+				</div>
+				<!-- Список переписок -->
+
+				<div class="h-100 d-flex flex-column">
+					<!-- Сообщения -->
+
+					<div class="h-100 overflow-auto flex-grow-1">
+						<!-- Сообщение -->
+						<div class="row m-0 mb-3">
+							<a href="/profile.html" class="col-2 chat-avatar">
+								<img src="/sets/hair-style-street-fashion-beautiful-girl.jpg" alt="" /></a>
+							<div class="col-10">
+								<div class="d-flex flex-row justify-content-between">
+									<a href="/profile.html" class="h5 text-decoration-none">Оксана Беляева</a>
+									<span>1 января 12:35</span>
+								</div>
+
+								<span>
+									Привет! Как дела? Куда ты пропал? Знаешь
+									как сдела дз на платформе?
+								</span>
+							</div>
+						</div>
+						<!-- Сообщение -->
+
+						<!-- Сообщение -->
+						<div class="row m-0 mb-3">
+							<a href="/profile.html" class="col-2 chat-avatar">
+								<img src="/sets/hair-style-street-fashion-beautiful-girl.jpg" alt="" /></a>
+							<div class="col-10">
+								<div class="d-flex flex-row justify-content-between">
+									<a href="/profile.html" class="h5 text-decoration-none">Оксана Беляева</a>
+									<span>1 января 12:35</span>
+								</div>
+
+								<span>Lorem. </span>
+							</div>
+						</div>
+						<!-- Сообщение -->
+
+						<!-- Сообщение -->
+						<div class="row m-0 mb-3">
+							<a href="/profile.html" class="col-2 chat-avatar">
+								<img src="/sets/hair-style-street-fashion-beautiful-girl.jpg" alt="" /></a>
+							<div class="col-10">
+								<div class="d-flex flex-row justify-content-between">
+									<a href="/profile.html" class="h5 text-decoration-none">Оксана Беляева</a>
+									<span>1 января 12:35</span>
+								</div>
+
+								<span>Lorem ipsum dolor sit amet consectetur
+									adipisicing elit. Voluptatibus, facere
+									libero vel adipisci necessitatibus amet
+									quas fugiat aspernatur mollitia deserunt
+									ab id, incidunt esse ipsum illum.
+									Repudiandae aliquid incidunt veritatis,
+									illo cumque natus consequuntur quae!
+									Illum, voluptas perspiciatis quae
+									nesciunt accusamus obcaecati. Veniam
+									praesentium quam iste, delectus fuga
+									reprehenderit assumenda est esse magni
+									laudantium debitis beatae ab! Asperiores
+									unde exercitationem culpa eos
+									consequatur itaque id incidunt quas
+									saepe quaerat? Perspiciatis earum unde
+									beatae excepturi exercitationem quae
+									tenetur optio molestias repellat
+									doloremque illum dicta voluptates
+									deleniti, rem voluptatum. Facilis
+									repudiandae, totam culpa sit dolorem
+									consequatur quo pariatur hic, possimus,
+									similique fugiat.
+								</span>
+							</div>
+						</div>
+						<!-- Сообщение -->
+
+						<!-- Сообщение -->
+						<div class="row m-0 mb-3">
+							<a href="/profile.html" class="col-2 chat-avatar">
+								<img src="/sets/hair-style-street-fashion-beautiful-girl.jpg" alt="" /></a>
+							<div class="col-10">
+								<div class="d-flex flex-row justify-content-between">
+									<a href="/profile.html" class="h5 text-decoration-none">Оксана Беляева</a>
+									<span>1 января 12:35</span>
+								</div>
+
+								<span>
+									Lorem ipsum dolor sit amet consectetur
+									adipisicing elit. Autem cupiditate unde
+									quidem, aliquid sit quisquam obcaecati
+									perspiciatis quibusdam delectus magnam.
+								</span>
+							</div>
+						</div>
+						<!-- Сообщение -->
+
+						<!-- Сообщение -->
+						<div class="row m-0 mb-3">
+							<a href="/profile.html" class="col-2 chat-avatar">
+								<img src="/sets/hair-style-street-fashion-beautiful-girl.jpg" alt="" /></a>
+							<div class="col-10">
+								<div class="d-flex flex-row justify-content-between">
+									<a href="/profile.html" class="h5 text-decoration-none">Оксана Беляева</a>
+									<span>1 января 12:35</span>
+								</div>
+
+								<span>Lorem ipsum dolor sit amet, consectetur
+									adipisicing elit. Nostrum, dolor sequi
+									reprehenderit expedita quidem sunt
+									veritatis laborum labore laudantium
+									sapiente necessitatibus consequatur?
+									Magni ratione voluptatem ea laboriosam
+									iste optio aliquid? Quisquam modi
+									corporis voluptatum doloribus! Dolorum
+									commodi nostrum atque sapiente rerum,
+									veniam accusantium reiciendis, beatae
+									aspernatur deserunt magnam, vitae
+									praesentium expedita. Magnam magni ad
+									nisi exercitationem iste quae, at
+									eligendi cum ea dignissimos repellendus,
+									nostrum omnis quas sed perspiciatis ex
+									ipsa qui accusantium atque a tenetur.
+									Facere, vitae quaerat et reprehenderit
+									illum totam sequi officiis non eveniet
+									voluptas! Aliquid fugit tempore
+									voluptatibus adipisci minus iste. Sequi
+									pariatur fuga maxime debitis.
+								</span>
+							</div>
+						</div>
+						<!-- Сообщение -->
+					</div>
+
+					<!-- Сообщения -->
+
+					<!-- Форма отправки -->
+					<textarea contenteditable class="form-control" rows="3"
+						placeholder="Начни писать сообщение"></textarea>
+					<!-- Форма отправки -->
+				</div>
+			</div>
+			<!-- Content -->
+		</div>
+	</div>
+	<!-- Main Conteiner -->
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+		integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+		integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+		crossorigin="anonymous"></script>
+
+	<script src="src/chat/index.js" type="module"></script>
+</body>
+
+</html>

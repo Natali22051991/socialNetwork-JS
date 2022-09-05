@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Настройки</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+	<link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+	<!-- Main Header -->
+	<nav class="navbar navbar-expand-lg bg-dark">
+		<div class="container main-container">
+			<div>
+				<a class="navbar-brand text-bg-dark" href="/">ConstCode</a>
+				<a class="btn btn-outline-primary" href="/users.html">Пользователи</a>
+			</div>
+			<button class="btn btn-danger">Выход</button>
+		</div>
+	</nav>
+	<!-- Main Header -->
+
+	<!-- Main Conteiner -->
+	<div class="container main-container pt-2">
+		<div class="row h-100">
+			<!-- Menu -->
+			<div class="col-3">
+				<div class="list-group">
+					<a href="/profile.html" class="list-group-item list-group-item-action" aria-current="true">
+						Моя страница
+					</a>
+					<a href="/friends.html" class="list-group-item list-group-item-action">Друзья</a>
+					<a href="/chat.html" class="list-group-item list-group-item-action">Чат
+						<span
+							class="d-none position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+						</span></a>
+					<a href="/setting.html" class="list-group-item list-group-item-action active">Настройки</a>
+				</div>
+			</div>
+			<!-- Menu -->
+
+			<!-- Content -->
+			<div class="col-9 h-100 d-flex flex-column pb-3">
+				<!-- Табы -->
+				<div>
+					<ul class="nav nav-tabs mb-3">
+						<li class="nav-item">
+							<button class="nav-link">Почта</button>
+						</li>
+
+						<li class="nav-item">
+							<button class="nav-link">Имя / Фамилия</button>
+						</li>
+
+						<li class="nav-item">
+							<button class="nav-link">Пароль</button>
+						</li>
+
+						<li class="nav-item">
+							<button class="nav-link">Аватар</button>
+						</li>
+
+						<li class="nav-item">
+							<button class="nav-link active">Статус</button>
+						</li>
+					</ul>
+				</div>
+				<!-- Табы -->
+
+				<!-- Смена почты -->
+				<form class="d-none">
+					<h3>Сменить почту</h3>
+					<!-- Email -->
+					<div class="input-group has-validation mb-3">
+						<!-- Добавить is-valid / is-invalid -->
+						<div class="form-floating">
+							<!-- Добавить is-valid / is-invalid -->
+							<input type="email" class="form-control" id="emailField" placeholder="Username" required />
+							<label for="emailField">Email</label>
+						</div>
+						<div class="invalid-feedback">
+							Нужно указать почту
+						</div>
+						<div class="valid-feedback">
+							Нужно указать почту
+						</div>
+					</div>
+					<!-- Email -->
+
+					<button type="button" class="btn btn-primary w-100">
+						Сохранить
+					</button>
+				</form>
+				<!-- Смена почты -->
+
+				<!-- Смена имени -->
+				<form class="d-none">
+					<h3>Сменить имя, фамилию</h3>
+					<!-- Name -->
+					<div class="input-group has-validation mb-3">
+						<!-- Добавить is-valid / is-invalid -->
+						<div class="form-floating">
+							<!-- Добавить is-valid / is-invalid -->
+							<input type="text" class="form-control" id="nameField" placeholder="Username" required />
+							<label for="nameField">Имя</label>
+						</div>
+						<div class="invalid-feedback">Укажите имя</div>
+						<div class="valid-feedback">Укажите имя</div>
+					</div>
+					<!-- Name -->
+
+					<!-- Surname -->
+					<div class="input-group has-validation mb-3">
+						<!-- Добавить is-valid / is-invalid -->
+						<div class="form-floating">
+							<!-- Добавить is-valid / is-invalid -->
+							<input type="text" class="form-control" id="surnameField" placeholder="Username" required />
+							<label for="surnameField">Фамилия</label>
+						</div>
+						<div class="invalid-feedback">Укажите фамилию</div>
+						<div class="valid-feedback">Укажите фамилию</div>
+					</div>
+					<!-- Surname -->
+
+					<button type="button" class="btn btn-primary w-100">
+						Сохранить
+					</button>
+				</form>
+				<!-- Смена имени -->
+
+				<!-- Смена пароля -->
+				<form class="d-none">
+					<h3>Сменить Пароль</h3>
+
+					<!-- Password -->
+					<div class="input-group has-validation mb-3">
+						<!-- Добавить is-valid / is-invalid -->
+						<div class="form-floating">
+							<!-- Добавить is-valid / is-invalid -->
+							<input type="password" class="form-control" id="passwordField" placeholder="Username"
+								required />
+							<label for="passwordField">Пароль</label>
+						</div>
+						<div class="invalid-feedback">
+							Пароль должен быть
+						</div>
+						<div class="valid-feedback">Пароль должен быть</div>
+					</div>
+					<!-- Password -->
+
+					<!-- Password cofirm -->
+					<div class="input-group has-validation mb-3">
+						<!-- Добавить is-valid / is-invalid -->
+						<div class="form-floating">
+							<!-- Добавить is-valid / is-invalid -->
+							<input type="password" class="form-control" id="confirmField" placeholder="Username"
+								required />
+							<label for="confirmField">Повторите пароль</label>
+						</div>
+						<div class="invalid-feedback">
+							Не совпадает с паролем
+						</div>
+					</div>
+					<!-- Password cofirm -->
+					<button type="button" class="btn btn-primary w-100">
+						Сохранить
+					</button>
+				</form>
+				<!-- Смена пароля -->
+
+				<!-- Смена аватара -->
+				<form class="d-none">
+					<h3>Сменить аватара</h3>
+					<div class="input-group has-validation mb-3">
+						<!-- Добавить is-valid / is-invalid -->
+						<div class="form-floating">
+							<!-- Добавить is-valid / is-invalid -->
+							<input id="avatarField" type="file" class="form-control mb-3" accept=".png, .jpg, .jpeg"
+								name="avatar" />
+							<label for="avatarField"></label>
+						</div>
+						<div class="invalid-feedback"></div>
+						<div class="valid-feedback"></div>
+					</div>
+					<button type="button" class="btn btn-primary w-100">
+						Сохранить
+					</button>
+				</form>
+				<!-- Смена аватара -->
+
+				<!-- Смена статуса -->
+				<form>
+					<h3>Сменить статуса</h3>
+					<div class="input-group has-validation mb-3">
+						<!-- Добавить is-valid / is-invalid -->
+						<div class="form-floating">
+							<!-- Добавить is-valid / is-invalid -->
+							<input type="text" class="form-control" id="statusField" placeholder="Username" required />
+							<label for="statusField">Статус</label>
+						</div>
+						<div class="invalid-feedback"></div>
+						<div class="valid-feedback"></div>
+					</div>
+					<button type="button" class="btn btn-primary w-100">
+						Сохранить
+					</button>
+				</form>
+				<!-- Смена статуса -->
+			</div>
+			<!-- Content -->
+		</div>
+	</div>
+	<!-- Main Conteiner -->
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+		integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+		integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+		crossorigin="anonymous"></script>
+	<script src="/src/setting/index.js"></script>
+</body>
+
+</html>
