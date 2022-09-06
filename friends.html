@@ -44,64 +44,28 @@
 
 			<!-- Content -->
 			<div class="col-9 h-100 d-flex flex-column pb-3">
-				<h3>Заявки в друзья:</h3>
-				<div class="d-flex flex-row justify-content-start flex-wrap overflow-auto">
-					<!-- Карточка друга -->
-					<a href="/profile.html" class="friend-card">
-						<img class="friend-card__avatar" src="sets/hair-style-street-fashion-beautiful-girl.jpg"
-							alt="" />
-						<span>Оксана Беляева</span>
-					</a>
-					<!-- Карточка друга -->
+				<h3 data-sigment="requests" data-type="header" class="d-none">Заявки в друзья:</h3>
+				<div data-sigment="requests" data-type="list"
+					class="d-flex flex-row justify-content-start flex-wrap overflow-auto">
 
-					<!-- Карточка друга -->
-					<a href="/profile.html" class="friend-card">
-						<img class="friend-card__avatar" src="sets/portrait-of-cheerful-caucasian-man.jpg" alt="" />
-						<span>Максим Оклахомов</span>
-					</a>
-					<!-- Карточка друга -->
-
-					<!-- Карточка друга -->
-					<a href="/profile.html" class="friend-card">
-						<img class="friend-card__avatar"
-							src="sets/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction_176420-15187.png"
-							alt="" />
-						<span>Диана Персикова</span>
-					</a>
-					<!-- Карточка друга -->
 				</div>
-				<h3>Друзья:</h3>
-				<div class="d-flex flex-row justify-content-start flex-wrap overflow-auto">
-					<!-- Карточка друга -->
-					<a href="/profile.html" class="friend-card">
-						<img class="friend-card__avatar" src="sets/hair-style-street-fashion-beautiful-girl.jpg"
-							alt="" />
-						<span>Оксана Беляева</span>
-					</a>
-					<!-- Карточка друга -->
+				<h3 data-sigment="friends" data-type="header">Друзья:</h3>
+				<div data-sigment="friends" data-type="list"
+					class="d-flex flex-row justify-content-start flex-wrap overflow-auto">
 
-					<!-- Карточка друга -->
-					<a href="/profile.html" class="friend-card">
-						<img class="friend-card__avatar" src="sets/portrait-of-cheerful-caucasian-man.jpg" alt="" />
-						<span>Максим Оклахомов</span>
-					</a>
-					<!-- Карточка друга -->
-
-					<!-- Карточка друга -->
-					<a href="/profile.html" class="friend-card">
-						<img class="friend-card__avatar"
-							src="sets/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction_176420-15187.png"
-							alt="" />
-						<span>Диана Персикова</span>
-					</a>
-					<!-- Карточка друга -->
 				</div>
 			</div>
 			<!-- Content -->
 		</div>
 	</div>
 	<!-- Main Conteiner -->
-
+	<template data-template="friendCard">
+		<a href="/profile.html" class="friend-card" data-field="link">
+			<img data-field="avatar" class="friend-card__avatar" src="sets/portrait-of-cheerful-caucasian-man.jpg"
+				alt="" />
+			<span data-field="name">Максим Оклахомов</span>
+		</a>
+	</template>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
 		crossorigin="anonymous"></script>
