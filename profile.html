@@ -91,9 +91,9 @@
 				<!-- Форма поста -->
 
 				<!-- Стена -->
-				<div class="h-100">
+				<div class="h-100" data-segment="wall">
 					<!-- Сообщение на стене -->
-					<div class="card mb-3">
+					<!-- <div class="card mb-3">
 						<div class="card-header">
 							<div class="row m-0">
 								<a href="/profile.html" class="col-2 chat-avatar">
@@ -127,11 +127,11 @@
 								<i class="bi bi-hand-thumbs-up-fill"> 1</i>
 							</button>
 						</div>
-					</div>
+					</div> -->
 					<!-- Сообщение на стене -->
 
 					<!-- Сообщение на стене -->
-					<div class="card mb-3">
+					<!-- <div class="card mb-3">
 						<div class="card-header">
 							<div class="row m-0">
 								<a href="/profile.html" class="col-2 chat-avatar">
@@ -165,11 +165,11 @@
 								<i class="bi bi-hand-thumbs-up-fill"> 1</i>
 							</button>
 						</div>
-					</div>
+					</div> -->
 					<!-- Сообщение на стене -->
 
 					<!-- Сообщение на стене -->
-					<div class="card mb-3">
+					<!-- <div class="card mb-3">
 						<div class="card-header">
 							<div class="row m-0">
 								<a href="/profile.html" class="col-2 chat-avatar">
@@ -203,11 +203,11 @@
 								<i class="bi bi-hand-thumbs-up"></i>
 							</button>
 						</div>
-					</div>
+					</div> -->
 					<!-- Сообщение на стене -->
 
 					<!-- Сообщение на стене -->
-					<div class="card mb-3">
+					<!-- <div class="card mb-3">
 						<div class="card-header">
 							<div class="row m-0">
 								<a href="/profile.html" class="col-2 chat-avatar">
@@ -241,7 +241,7 @@
 								<i class="bi bi-hand-thumbs-up-fill"> 1</i>
 							</button>
 						</div>
-					</div>
+					</div> -->
 					<!-- Сообщение на стене -->
 				</div>
 				<!-- Стена -->
@@ -250,7 +250,43 @@
 		</div>
 	</div>
 	<!-- Main Conteiner -->
-
+	<template data-template="post">
+		<div class="card mb-3">
+			<div class="card-header">
+				<div class="row m-0">
+					<a href="/profile.html" class="col-2 chat-avatar" data-field="avatarlink">
+						<img src="/sets/hair-style-street-fashion-beautiful-girl.jpg" alt="" data-field="avatar"></a>
+					<div class="col-10">
+						<div class="d-flex flex-row justify-content-between">
+							<a href="/profile.html" class="h5 text-decoration-none" data-field="name">Оксана Беляева</a>
+						</div>
+						<span data-field="createdAt">1 января 1970 г., 12:37</span>
+					</div>
+				</div>
+			</div>
+			<div class="card-body" data-field="content">Йоу! Как жизнь?</div>
+			<div class="d-none" data-segment="editor">
+				<textarea class="form-control" placeholder="Leave a comment here" style="height: 100px"
+					data-field="editor"></textarea>
+				<button type="button" class="btn btn-primary w-100" data-action="save">
+					Сохранить
+				</button>
+			</div>
+			<div class="card-body d-flex flex-row justify-content-between" data-segment="actions">
+				<div>
+					<button class="btn btn-outline-danger" data-action="remove">
+						<i class="bi bi-trash"></i>
+					</button>
+					<button class="btn btn-outline-info" data-action="edit">
+						<i class="bi bi-pencil"></i>
+					</button>
+				</div>
+				<button class="btn btn-outline-secondary" data-field="like">
+					<i class="bi bi-hand-thumbs-up-fill"> 1</i>
+				</button>
+			</div>
+		</div>
+	</template>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
 		crossorigin="anonymous"></script>

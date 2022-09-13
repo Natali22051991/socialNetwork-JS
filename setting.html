@@ -18,7 +18,7 @@
 				<a class="navbar-brand text-bg-dark" href="/">ConstCode</a>
 				<a class="btn btn-outline-primary" href="/users.html">Пользователи</a>
 			</div>
-			<button class="btn btn-danger">Выход</button>
+			<button class="btn btn-danger" data-action="signout">Выход</button>
 		</div>
 	</nav>
 	<!-- Main Header -->
@@ -45,7 +45,7 @@
 			<!-- Content -->
 			<div class="col-9 h-100 d-flex flex-column pb-3">
 				<!-- Табы -->
-				<div>
+				<div data-segment="select">
 					<ul class="nav nav-tabs mb-3">
 						<li class="nav-item">
 							<button class="nav-link">Почта</button>
@@ -71,14 +71,15 @@
 				<!-- Табы -->
 
 				<!-- Смена почты -->
-				<form class="d-none">
+				<form class="d-none" data-tab="email">
 					<h3>Сменить почту</h3>
 					<!-- Email -->
-					<div class="input-group has-validation mb-3">
+					<div class="input-group has-validation mb-3" data-segment="email">
 						<!-- Добавить is-valid / is-invalid -->
 						<div class="form-floating">
 							<!-- Добавить is-valid / is-invalid -->
-							<input type="email" class="form-control" id="emailField" placeholder="Username" required />
+							<input type="email" class="form-control" id="emailField" placeholder="Username" required
+								data-field="email" />
 							<label for="emailField">Email</label>
 						</div>
 						<div class="invalid-feedback">
@@ -90,21 +91,22 @@
 					</div>
 					<!-- Email -->
 
-					<button type="button" class="btn btn-primary w-100">
+					<button type="button" class="btn btn-primary w-100" data-action="save">
 						Сохранить
 					</button>
 				</form>
 				<!-- Смена почты -->
 
 				<!-- Смена имени -->
-				<form class="d-none">
+				<form class="d-none" data-tab="name">
 					<h3>Сменить имя, фамилию</h3>
 					<!-- Name -->
-					<div class="input-group has-validation mb-3">
+					<div class="input-group has-validation mb-3" data-segment="name">
 						<!-- Добавить is-valid / is-invalid -->
 						<div class="form-floating">
 							<!-- Добавить is-valid / is-invalid -->
-							<input type="text" class="form-control" id="nameField" placeholder="Username" required />
+							<input type="text" class="form-control" id="nameField" placeholder="Username" required
+								data-field="name" />
 							<label for="nameField">Имя</label>
 						</div>
 						<div class="invalid-feedback">Укажите имя</div>
@@ -113,11 +115,12 @@
 					<!-- Name -->
 
 					<!-- Surname -->
-					<div class="input-group has-validation mb-3">
+					<div class="input-group has-validation mb-3" data-segment="surname">
 						<!-- Добавить is-valid / is-invalid -->
 						<div class="form-floating">
 							<!-- Добавить is-valid / is-invalid -->
-							<input type="text" class="form-control" id="surnameField" placeholder="Username" required />
+							<input type="text" class="form-control" id="surnameField" placeholder="Username" required
+								data-field="surname" />
 							<label for="surnameField">Фамилия</label>
 						</div>
 						<div class="invalid-feedback">Укажите фамилию</div>
@@ -125,18 +128,18 @@
 					</div>
 					<!-- Surname -->
 
-					<button type="button" class="btn btn-primary w-100">
+					<button type="button" class="btn btn-primary w-100" data-action="save">
 						Сохранить
 					</button>
 				</form>
 				<!-- Смена имени -->
 
 				<!-- Смена пароля -->
-				<form class="d-none">
+				<form class="d-none" data-tab="password">
 					<h3>Сменить Пароль</h3>
 
 					<!-- Password -->
-					<div class="input-group has-validation mb-3">
+					<div class="input-group has-validation mb-3" data-segment="password">
 						<!-- Добавить is-valid / is-invalid -->
 						<div class="form-floating">
 							<!-- Добавить is-valid / is-invalid -->
@@ -152,7 +155,7 @@
 					<!-- Password -->
 
 					<!-- Password cofirm -->
-					<div class="input-group has-validation mb-3">
+					<div class="input-group has-validation mb-3" data-segment="confirm">
 						<!-- Добавить is-valid / is-invalid -->
 						<div class="form-floating">
 							<!-- Добавить is-valid / is-invalid -->
@@ -165,46 +168,47 @@
 						</div>
 					</div>
 					<!-- Password cofirm -->
-					<button type="button" class="btn btn-primary w-100">
+					<button type="button" class="btn btn-primary w-100" data-action="save">
 						Сохранить
 					</button>
 				</form>
 				<!-- Смена пароля -->
 
 				<!-- Смена аватара -->
-				<form class="d-none">
+				<form class="d-none" data-tab="avatar">
 					<h3>Сменить аватара</h3>
-					<div class="input-group has-validation mb-3">
+					<div class="input-group has-validation mb-3" data-segment="avatar">
 						<!-- Добавить is-valid / is-invalid -->
 						<div class="form-floating">
 							<!-- Добавить is-valid / is-invalid -->
 							<input id="avatarField" type="file" class="form-control mb-3" accept=".png, .jpg, .jpeg"
-								name="avatar" />
+								name="avatar" data-field="avatar" />
 							<label for="avatarField"></label>
 						</div>
 						<div class="invalid-feedback"></div>
 						<div class="valid-feedback"></div>
 					</div>
-					<button type="button" class="btn btn-primary w-100">
+					<button type="button" class="btn btn-primary w-100" data-action="save">
 						Сохранить
 					</button>
 				</form>
 				<!-- Смена аватара -->
 
 				<!-- Смена статуса -->
-				<form>
+				<form data-tab="status">
 					<h3>Сменить статуса</h3>
-					<div class="input-group has-validation mb-3">
+					<div class="input-group has-validation mb-3" data-segment="status">
 						<!-- Добавить is-valid / is-invalid -->
 						<div class="form-floating">
 							<!-- Добавить is-valid / is-invalid -->
-							<input type="text" class="form-control" id="statusField" placeholder="Username" required />
+							<input type="text" class="form-control" id="statusField" placeholder="Username" required
+								data-field="status" />
 							<label for="statusField">Статус</label>
 						</div>
 						<div class="invalid-feedback"></div>
 						<div class="valid-feedback"></div>
 					</div>
-					<button type="button" class="btn btn-primary w-100">
+					<button type="button" class="btn btn-primary w-100" data-action="save">
 						Сохранить
 					</button>
 				</form>
@@ -224,7 +228,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
 		integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
 		crossorigin="anonymous"></script>
-	<script src="/src/setting/index.js"></script>
+	<script src="./src/setting/index.js" type="module"></script>
 </body>
 
 </html>
