@@ -22,7 +22,6 @@ class EventEmitter {//класс будет имитировать событи�
             }
         }
     }
-
 }
 
 export default EventEmitter;

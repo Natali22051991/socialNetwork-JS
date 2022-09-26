@@ -13,15 +13,12 @@ main();
 async function main() {
 
     if (!menuDiv) {
-        console.log(menuDiv);
         return;
     }
 
     const user = await session();
 
     if (user) {
-        console.log(user);
-        console.log(menuDiv);
         menuDiv.classList.remove("invisible");
     } else {
         menuDiv.classList.add("invisible");
@@ -30,7 +27,7 @@ async function main() {
     const { pathname } = location;
     let activeMenuItemTag = null;
 
-    if (pathname === "./profile.html") {
+    if (pathname === "/profile.html") {
         const sp = new URLSearchParams(location.search);
 
         if (sp.has("userId")) {
@@ -44,7 +41,7 @@ async function main() {
             activeMenuItemTag = "profile";
         }
     } else if (pathname === "/firends.html") {
-        activeMenuItemTag === "friends";
+        activeMenuItemTag = "friends";
     } else if (pathname === "/chat.html") {
         activeMenuItemTag = "chat";
     } else if (pathname === "/setting.html") {
@@ -80,5 +77,3 @@ export function read(messageId) {
     socket.emit("status", messageId, handler);
 }
 
-const body = document.querySelector('body')
-console.log(body);

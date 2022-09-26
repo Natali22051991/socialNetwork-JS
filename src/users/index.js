@@ -1,6 +1,5 @@
 import "../initExit.js";
 
-
 const usersListDiv = document.querySelector('[data-sigment="userslist"]');
 
 main();
@@ -24,7 +23,6 @@ async function main() {
 function initUsersList(users) {
     usersListDiv.innerHTML = '';
     usersListDiv.append(...users.map(createUserItem)) // оператор спред ... узнать что это?!?!?!?!?!?
-
 }
 
 function createUserItem(user) {

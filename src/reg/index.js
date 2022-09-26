@@ -1,10 +1,12 @@
+import FormSegment from "../FormSegment.js";
 import { isEmail, session } from "../util.js";
 
-const igroupEmail = document.querySelector('[data-igroup="email"]');
-const igroupFirstName = document.querySelector('[data-igroup="firstName"]');
-const igroupLastName = document.querySelector('[data-igroup="lastName"]');
-const igroupPassword = document.querySelector('[data-igroup="password"]');
-const igroupConfirm = document.querySelector('[data-igroup="confirm"]');
+const emailSegment = new FormSegment('email');
+const namelSegment = new FormSegment('name');
+const surnameSegment = new FormSegment('surname');
+const passwordSegment = new FormSegment('password');
+const confirmSegment = new FormSegment('confirm');
+
 const regButton = document.querySelector('[data-action="reg"]');
 
 main();
@@ -14,7 +16,6 @@ async function main() {//функция которая будет точкой �
     if (user) {//если сессия существует
         return location.href = '/profile.html';
     }
-
     regButton.addEventListener('click', validate);
 
 }
@@ -22,159 +23,94 @@ async function main() {//функция которая будет точкой �
 function validate() {
     let flag = true;
     // имя
-    const nameFormFloating = igroupFirstName.querySelector('.form-floating');
-    const nameInput = igroupFirstName.querySelector('input');
-    const name = nameInput.value.trim();
 
-    nameFormFloating.classList.remove("is-valid", "is-invalid");
-    nameInput.classList.remove("is-valid", "is-invalid");
+    const name = namelSegment.input.value.trim();
+    namelSegment.ressetValid();
 
     if (!name) {
         flag = false;
-        nameFormFloating.classList.add("is-invalid");
-
-        nameInput.classList.add('is-invalid');
+        namelSegment.setInvalid('Нужно указать имя.');
     } else {
-        nameFormFloating.classList.add("is-valid");
-
-        nameInput.classList.add('is-valid');
+        namelSegment.setValid();
     }
     // фамилия
-    const lastNameFormFloating = igroupLastName.querySelector('.form-floating');
-    const lastNameInput = igroupLastName.querySelector('input');
-    const surname = lastNameInput.value.trim();
 
-    lastNameFormFloating.classList.remove("is-valid", "is-invalid");
-    lastNameInput.classList.remove("is-valid", "is-invalid");
+    const surname = surnameSegment.input.value.trim();
+    surnameSegment.ressetValid();
 
     if (!surname) {
         flag = false;
-        lastNameFormFloating.classList.add("is-invalid");
-
-        lastNameInput.classList.add('is-invalid');
+        surnameSegment.setInvalid('Нужно указать фамилию.')
     } else {
-        lastNameFormFloating.classList.add("is-valid");
-
-        lastNameInput.classList.add('is-valid');
+        surnameSegment.setValid();
     }
 
     // почта
-    const emailFormFloating = igroupEmail.querySelector('.form-floating');
-    const emailInput = igroupEmail.querySelector('input');
-    const email = emailInput.value.trim();
 
-    emailFormFloating.classList.remove("is-valid", "is-invalid");
-    emailInput.classList.remove("is-valid", "is-invalid");
+    const email = emailSegment.input.value.trim();
+    emailSegment.ressetValid();
 
     if (!isEmail(email)) {
-
         flag = false;
-        emailFormFloating.classList.add("is-invalid");
-
-        emailInput.classList.add('is-invalid');
+        emailSegment.setInvalid('Нужно указать почту.');
 
     } else {
-        emailFormFloating.classList.add("is-valid");
-
-        emailInput.classList.add('is-valid');
+        emailSegment.setValid();
     }
     // пароль
-    const passwordFormFloating = igroupPassword.querySelector('.form-floating');
-    const passwordInput = igroupPassword.querySelector('input');
-    const password = passwordInput.value;
 
-    passwordFormFloating.classList.remove("is-valid", "is-invalid");
-    passwordInput.classList.remove("is-valid", "is-invalid");
+    const password = passwordSegment.input.value;
+    passwordSegment.ressetValid();
 
     if (password.length < 3) {
         flag = false;
-        passwordFormFloating.classList.add("is-invalid");
-
-        passwordInput.classList.add('is-invalid');
+        passwordSegment.setInvalid('Пароль должен быть длиной не менее 3-х символов.');
     } else {
-        passwordFormFloating.classList.add("is-valid");
-
-        passwordInput.classList.add('is-valid');
+        passwordSegment.setValid();
     }
 
     // повтор пароля
-    const сonfirmFormFloating = igroupConfirm.querySelector('.form-floating');
-    const сonfirmInput = igroupConfirm.querySelector('input');
-    const сonfirmPassword = сonfirmInput.value;
+    const сonfirmPassword = confirmSegment.input.value;
+    confirmSegment.ressetValid();
 
-    сonfirmFormFloating.classList.remove("is-valid", "is-invalid");
-    сonfirmInput.classList.remove("is-valid", "is-invalid");
-
-    if (!сonfirmPassword || сonfirmPassword != password) {
+    if (!сonfirmPassword || сonfirmPassword !== password) {
         flag = false;
-        сonfirmFormFloating.classList.add("is-invalid");
-
-        сonfirmInput.classList.add('is-invalid');
+        confirmSegment.setInvalid('Пароль и подтверждения должны совпадать.');
     } else {
-        if (сonfirmPassword === password) {
-            сonfirmFormFloating.classList.add("is-valid");
-
-            сonfirmInput.classList.add('is-valid');
-        } else {
-            сonfirmFormFloating.classList.add("is-invalid");
-
-            сonfirmInput.classList.add('is-invalid');
-        }
-
+        confirmSegment.setValid();
     }
 
     if (flag) {
         registration();
     }
-
 }
 
 //POST/api/reg -адрес
 async function registration() {
     //сброс классов,тк все валидно
     // имя
-    const nameFormFloating = igroupFirstName.querySelector('.form-floating');
-    const nameInput = igroupFirstName.querySelector('input');
-    const name = nameInput.value.trim();
-    nameFormFloating.classList.remove("is-valid", "is-invalid");
-    nameInput.classList.remove("is-valid", "is-invalid");
+    namelSegment.ressetValid();
+    const name = namelSegment.input.value.trim();
 
     // фамилия
-    const lastNameFormFloating = igroupLastName.querySelector('.form-floating');
-    const lastNameInput = igroupLastName.querySelector('input');
-    const surname = lastNameInput.value.trim();
-
-    lastNameFormFloating.classList.remove("is-valid", "is-invalid");
-    lastNameInput.classList.remove("is-valid", "is-invalid");
-
+    surnameSegment.ressetValid();
+    const surname = surnameSegment.input.value.trim();
 
     // почта
-    const emailFormFloating = igroupEmail.querySelector('.form-floating');
-    const emailInput = igroupEmail.querySelector('input');
-    const email = emailInput.value.trim();
-
-    emailFormFloating.classList.remove("is-valid", "is-invalid");
-    emailInput.classList.remove("is-valid", "is-invalid");
+    emailSegment.ressetValid();
+    const email = emailSegment.input.value.trim();
 
     // пароль
-    const passwordFormFloating = igroupPassword.querySelector('.form-floating');
-    const passwordInput = igroupPassword.querySelector('input');
-    const password = passwordInput.value;
-
-    passwordFormFloating.classList.remove("is-valid", "is-invalid");
-    passwordInput.classList.remove("is-valid", "is-invalid");
+    passwordSegment.ressetValid();
+    const password = passwordSegment.input.value;
+    passwordSegment.input.value = '';
 
     // повтор пароля
-    const сonfirmFormFloating = igroupConfirm.querySelector('.form-floating');
-    const сonfirmInput = igroupConfirm.querySelector('input');
+    confirmSegment.ressetValid();
+    confirmSegment.input.value = '';
 
-
-
-    сonfirmFormFloating.classList.remove("is-valid", "is-invalid");
-    сonfirmInput.classList.remove("is-valid", "is-invalid");
     try {
         const response = await fetch("/api/reg", {
-
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

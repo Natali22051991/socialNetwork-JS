@@ -10,19 +10,15 @@ class StatusOption extends Option {
         statusSegment.input.value = status;
         statusSegment.ressetValid();
         Object.assign(this, { statusSegment });
-
     }
-
 
     //PATCH/api/user
     //{status}
     async save() {
         const { statusSegment } = this;
-
         const status = statusSegment.getValue().trim();
         const data = new FormData();
         data.set('status', status);
-
         try {
             const response = await fetch('/api/user', {
                 method: "PATCH",

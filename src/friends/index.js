@@ -2,17 +2,11 @@ import { session } from "../util.js";
 import "../initExit.js";
 import "../initMenu.js";
 
-
 const friendCardTamplate = document.querySelector('[data-template="friendCard"]');
-
 const requestsH = document.querySelector('[data-sigment="requests"][data-type="header"]');
 const requestsDiv = document.querySelector('[data-sigment="requests"][data-type="list"]');
 const friendsH = document.querySelector('[data-sigment="friends"][data-type="header"]');
 const friendsDiv = document.querySelector('[data-sigment="friends"][data-type="list"]');
-console.log(requestsH)
-console.log(requestsDiv)
-console.log(friendsH)
-console.log(friendsDiv)
 
 let friends = [];
 let requests = [];
@@ -22,7 +16,7 @@ main();
 // data-field="avatar"
 // data-field="name"
 async function main() {
-    await session(function () { location.href = '/'; });//проверяем если пользователь авторизован остаемся на этой странице , или же перекидываем его на главную
+    await session(() => (location.href = "/"));//проверяем если пользователь авторизован остаемся на этой странице , или же перекидываем его на главную
     await init();
 
     initRequests();
@@ -33,7 +27,6 @@ async function main() {
 function creatFriendCard(user) {
     //template хранит документ фрагмент, а документ-фрагмент уже первый элемент нужный  нам
     const friendCard = document.importNode(friendCardTamplate.content, true).firstElementChild; //клонируем
-
 
     const avatarImg = friendCard.querySelector('[data-field="avatar"]');
     const nameSpan = friendCard.querySelector('[data-field="name"]');
@@ -46,20 +39,17 @@ function creatFriendCard(user) {
 }
 //GET/api/friends
 async function init() {
-
     try {
         const response = await fetch('/api/friends', { method: "GET" });
         if (response.ok) {
             const data = await response.json();
             // console.log(user);
-            friends = data.friends;//почему дата?????
-            requests = data.requests;//почему дата?????
+            friends = data.friends;
+            requests = data.requests;
             return;
         }
-
         const text = await response.text();
         throw Error(text);
-
     } catch (error) {
         console.error(error);
         alert(error.message);

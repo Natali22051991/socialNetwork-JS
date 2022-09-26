@@ -1,6 +1,6 @@
 import "../initExit.js";
 import "../initMenu.js";
-import { getProfile, session } from "../util.js";
+import { getProfile, session, getDivMessage } from "../util.js";
 
 const wallDiv = document.querySelector('[data-segment="wall"]');
 const postTemplate = document.querySelector('[data-template="post"]');
@@ -41,7 +41,6 @@ async function main() { //инициализация user и profile
     } else {
         return (location.href = "/");
     }
-
     // profile.friend = false;
     // profile.request = false;
 
@@ -82,16 +81,11 @@ async function main() { //инициализация user и profile
         fieldPostTextarea.value = '';
         sendPostButton.addEventListener('click', sendPost);
     }
-
-    console.log({ profile, user });
     initWall();
 }
 
-
-
 //POST/api/request/:userId
 async function addFriend() {
-    // console.log('11111')
     try {
         const response = await fetch(`/api/request/${profile.user.id}`, { method: "POST" });
         console.log(response)
@@ -103,13 +97,10 @@ async function addFriend() {
         console.log('444')
         const text = await response.text();
         throw Error(error);
-
-
     } catch (error) {
         console.error(error);
         alert(error.message);
     }
-
 }
 
 ////POST/api/revoke/:userId
@@ -142,18 +133,15 @@ async function removeFriend() {
         }
         const text = await response.text();
         throw Error(error);
-
-
     } catch (error) {
         console.error(error);
         alert(error.message);
     }
-
 }
 //запрос на получение данных по посту
 async function sendPost() {
     const content = fieldPostTextarea.value.trim();
-    console.log(content)
+    // console.log(content)
     if (!content) {
         return;
     }
@@ -167,13 +155,11 @@ async function sendPost() {
         });
 
         if (response.ok) {
-
             location.reload();
             return;
         }
         const text = await response.text();
         throw Error(text);
-
     } catch (error) {
         console.error(error);
         alert(error.message);
@@ -193,22 +179,27 @@ function creatPost(post) {
     nameA.href = `/profile.html?userId=${post.userId}`;
     const createdAtSpan = postDiv.querySelector('[data-field="createdAt"]')
     createdAtSpan.textContent = format(new Date(post.createdAt));
+
     const contentDiv = postDiv.querySelector('[data-field="content"]');
+    const contentView = getDivMessage(post.content);
+
+    contentDiv.replaceWith(contentView);
     contentDiv.textContent = post.content;
+
     const removeButton = postDiv.querySelector('[data-action="remove"]');
     const editButton = postDiv.querySelector('[data-action="edit"]');
     const likeButton = postDiv.querySelector('[data-field="like"]');
     likeButton.classList.remove('btn-outline-primary', 'btn-outline-secondary');
-    // post.likes = 5;
-    // post.liked = 5;
+
     if (post.liked) {
         likeButton.classList.add('btn-outline-primary');
     } else {
         likeButton.classList.add('btn-outline-secondary');
     }
-    const likeCounterI = likeButton.querySelector('i');
 
+    const likeCounterI = likeButton.querySelector('i');
     likeCounterI.classList.remove('bi-hand-thumbs-up-fill', 'bi-hand-thumbs-up');
+
     if (post.likes) {
         likeCounterI.textContent = `  ${post.likes}`;
         likeCounterI.classList.add('bi-hand-thumbs-up-fill');
@@ -216,19 +207,17 @@ function creatPost(post) {
         likeCounterI.textContent = '';
         likeCounterI.classList.add('bi-hand-thumbs-up');
     }
+
     if (user && (user.id === profile.user.id || post.userId === user.id)) {
         removeButton.classList.remove('invisible');
-
     } else {
         removeButton.classList.add('invisible');
         editButton.classList.add('invisible');
     }
 
     if (user && user.id === post.userId) {
-
         editButton.classList.remove('invisible');
     } else {
-
         editButton.classList.add('invisible');
     }
 
@@ -244,15 +233,13 @@ function initWall() {
 }
 
 function initPostDiv(postDiv) {
-
-
     const removeButton = postDiv.querySelector('[data-action="remove"]');
     const editButton = postDiv.querySelector('[data-action="edit"]');
     const likeButton = postDiv.querySelector('[data-field="like"]');
 
     likeButton.addEventListener('click', toggleLike);
     removeButton.addEventListener('click', removePost);
-    editButton.addEventListener('click', startEditorPost)
+    editButton.addEventListener('click', startEditorPost);
     return postDiv;
 }
 
@@ -260,7 +247,6 @@ function initPostDiv(postDiv) {
 async function toggleLike() {
     const div = this.closest("div[data-post-id]");// находим родительский элемент . ссылается на ту кнопку где это событие произошло
     const postId = parseInt(div.dataset.postId, 10);//парсим
-    // console.log(postId);
     try {
         const response = await fetch(`/api/liketoggle/${postId}`, {
             method: "POST",
@@ -279,7 +265,6 @@ async function toggleLike() {
     } catch (error) {
         console.error(error);
     }
-
 }
 async function removePost() {
     const answer = confirm('Вы уверенны,что хотите удалить пост?');// вызывает доп окно,где может быть результат ДА/НЕТ
@@ -288,7 +273,6 @@ async function removePost() {
     }
     const div = this.closest("div[data-post-id]");// находим родительский элемент . ссылается на ту кнопку где это событие произошло
     const postId = parseInt(div.dataset.postId, 10);//парсим
-    // console.log(postId);
     try {
         const response = await fetch(`/api/post/${postId}`, {
             method: "DELETE",
@@ -309,18 +293,14 @@ async function removePost() {
 }
 function startEditorPost() {
     const div = this.closest("div[data-post-id]");// находим родительский элемент . ссылается на ту кнопку где это событие произошло
-    const editorDiv = div.querySelector('[data-segment="editor"]');
-    const actionsDiv = div.querySelector('[ data-segment="actions"]');
-    const contentDiv = div.querySelector('[data-field="content"]');
-    const editorTextarea = div.querySelector('[data-field="editor"]');
-    const saveButton = div.querySelector('[data-action="save"]');
-
     const postId = parseInt(div.dataset.postId, 10);//парсим
     const post = profile.posts.find((post) => post.id === postId);
-
+    const editorDiv = div.querySelector('[data-segment="editor"]');
+    const actionsDiv = div.querySelector('[ data-segment="actions"]');
+    const editorTextarea = div.querySelector('[data-field="editor"]');
+    const saveButton = div.querySelector('[data-action="save"]');
     editorDiv.classList.remove('d-none');
     actionsDiv.classList.add('d-none');
-    contentDiv.classList.add('d-none');
     editorTextarea.value = post.content;
     editorTextarea.focus();
     saveButton.addEventListener('click', savePost);
@@ -330,7 +310,6 @@ function startEditorPost() {
 async function savePost() {
     const div = this.closest("div[data-post-id]");
     const editorTextarea = div.querySelector('[data-field="editor"]');
-    const saveButton = div.querySelector('[data-action="save"]');
 
     const postId = parseInt(div.dataset.postId, 10);//парсим
     const content = editorTextarea.value.trim();

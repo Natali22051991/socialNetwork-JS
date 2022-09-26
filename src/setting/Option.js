@@ -8,8 +8,8 @@ class Option extends EventEmitter {//так как он будет имитир�
         //сгенерируем список
         const li = document.createElement('li');
         li.className = 'nav-item';
-        const form = document.querySelector(`[data-tab="${code}"]`); //найдем все формы
 
+        const form = document.querySelector(`[data-tab="${code}"]`); //найдем все формы
         const button = document.createElement('button');
         button.classList.add('nav-link');
         button.textContent = title;

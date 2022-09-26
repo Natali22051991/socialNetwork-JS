@@ -5,14 +5,13 @@ main();
 
 async function main() {
     const user = await session();// вызываем сессию
-    // console.log(user);
+    console.log(user);
     if (user) {//если сессия существует
         signoutButton.classList.remove('d-none');
         signoutButton.addEventListener('click', signout);
     } else {
         signoutButton.classList.add('d-none');
     }
-
 }
 
 async function signout() {

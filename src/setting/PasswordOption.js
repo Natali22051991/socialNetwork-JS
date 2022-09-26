@@ -8,13 +8,10 @@ class PasswordOption extends Option {
         const passwordSegment = new FormSegment('password', form);//создаем сегменты
         const confirmdSegment = new FormSegment('confirm', form);//создаем сегменты
         Object.assign(this, { passwordSegment, confirmdSegment });
-
     }
 
     validate() {
         const { passwordSegment, confirmdSegment } = this;
-
-
         const password = passwordSegment.input.value;
         const confirmPassword = confirmdSegment.input.value;
 
@@ -39,23 +36,18 @@ class PasswordOption extends Option {
         } else {
             confirmdSegment.setValid();
         }
-
         return flag;
     }
-
 
     //PATCH/api/user/password
     //{password}
     async save() {
         const { passwordSegment, confirmdSegment } = this;
-
-
         passwordSegment.ressetValid();
         confirmdSegment.ressetValid();
         const password = passwordSegment.input.value;
         passwordSegment.input.value = '';
         confirmdSegment.input.value = '';
-
         try {
             const response = await fetch('/api/user/password', {
                 method: "PATCH",
@@ -63,9 +55,7 @@ class PasswordOption extends Option {
                 body: JSON.stringify({ password }),
             });
             if (response.ok) {
-                passwordSegment.setValid('Пароль успешно обновлен.');
-
-                return;
+                return passwordSegment.setValid('Пароль успешно обновлен.');
             }
             const text = await response.text();
             throw Error(text);
@@ -74,6 +64,5 @@ class PasswordOption extends Option {
             console.error(error);
         }
     }
-
 }
 export default PasswordOption;

@@ -8,7 +8,6 @@ class Emailoption extends Option {//наследует все из Option
 
     constructor(email) {//чтобы взять почту,передаем ее сюда
         super('Почта', 'email');//берем из родительского
-
         const { form } = this; //берем форму для почты
         const emailSegment = new FormSegment('email', form);
         emailSegment.input.value = email;
@@ -33,7 +32,6 @@ class Emailoption extends Option {//наследует все из Option
     async save() {
         const { emailSegment } = this;// берем форму из контекста из экземпляра класса
         const email = emailSegment.input.value;
-
         emailSegment.ressetValid();
 
         try {
@@ -43,9 +41,8 @@ class Emailoption extends Option {//наследует все из Option
                 body: JSON.stringify({ email }),
             });
             if (response.ok) {
-                emailSegment.setValid('Почта успешно обновлена');
+                return emailSegment.setValid('Почта успешно обновлена');
 
-                return;
             }
             const text = await response.text();
             throw Error(text);
