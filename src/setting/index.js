@@ -1,5 +1,9 @@
 import "../initExit.js";
 import { session } from "../util.js";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 35ccd92ea5d086273440020ca56b036a2565bdae
 import "../initMenu.js";
 import Select from './Select.js';
 import Emailoption from "./EmailOption.js";

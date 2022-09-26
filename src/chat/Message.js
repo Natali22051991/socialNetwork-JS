@@ -38,6 +38,10 @@ class Message {//будет хранить в себе информацию о �
     }
 }
 export default Message;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 35ccd92ea5d086273440020ca56b036a2565bdae
 /**
  *  {
       "id": "cl8cqtpxh0000dcur0d6bdy7v",

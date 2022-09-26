@@ -22,6 +22,10 @@ async function main() {
 
     const { pathname } = location;
     let activeMenuItemTag = null;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 35ccd92ea5d086273440020ca56b036a2565bdae
     if (pathname === "/profile.html") {
         const sp = new URLSearchParams(location.search);
 

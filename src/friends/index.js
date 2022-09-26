@@ -27,6 +27,10 @@ async function main() {
 function creatFriendCard(user) {
     //template хранит документ фрагмент, а документ-фрагмент уже первый элемент нужный  нам
     const friendCard = document.importNode(friendCardTamplate.content, true).firstElementChild; //клонируем
+<<<<<<< HEAD
+=======
+
+>>>>>>> 35ccd92ea5d086273440020ca56b036a2565bdae
     const avatarImg = friendCard.querySelector('[data-field="avatar"]');
     const nameSpan = friendCard.querySelector('[data-field="name"]');
 

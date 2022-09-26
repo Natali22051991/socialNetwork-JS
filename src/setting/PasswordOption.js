@@ -38,6 +38,10 @@ class PasswordOption extends Option {
         }
         return flag;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 35ccd92ea5d086273440020ca56b036a2565bdae
     //PATCH/api/user/password
     //{password}
     async save() {
