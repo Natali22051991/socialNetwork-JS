@@ -34,5 +34,4 @@ class Chatlist extends EventEmitter {
         }
     }
 }
-
 export default Chatlist;

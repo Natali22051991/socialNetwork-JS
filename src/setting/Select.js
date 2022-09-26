@@ -21,4 +21,5 @@ class Select {
         }
     }
 }
+
 export default Select; //экспортируем поумолчанию

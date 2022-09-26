@@ -9,15 +9,11 @@ const notificationSpan = document.querySelector('[data-field="notification"]');
 let socket = null;
 
 main();
-
 async function main() {
-
     if (!menuDiv) {
         return;
     }
-
     const user = await session();
-
     if (user) {
         menuDiv.classList.remove("invisible");
     } else {
@@ -26,7 +22,6 @@ async function main() {
 
     const { pathname } = location;
     let activeMenuItemTag = null;
-
     if (pathname === "/profile.html") {
         const sp = new URLSearchParams(location.search);
 

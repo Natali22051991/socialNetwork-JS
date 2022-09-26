@@ -49,4 +49,5 @@ class FormSegment {//для обработки формы общая прогр�
     }
 
 }
+
 export default FormSegment;

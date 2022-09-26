@@ -2,7 +2,6 @@ import { session } from "./util.js";
 const signoutButton = document.querySelector('[data-action="signout"]');
 
 main();
-
 async function main() {
     const user = await session();// вызываем сессию
     console.log(user);

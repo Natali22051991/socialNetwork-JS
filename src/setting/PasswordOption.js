@@ -38,7 +38,6 @@ class PasswordOption extends Option {
         }
         return flag;
     }
-
     //PATCH/api/user/password
     //{password}
     async save() {

@@ -43,7 +43,6 @@ class Chat extends EventEmitter {//будет управлять поведен�
                 data.readed = true;
             }
         }
-
         messagesDiv.scrollTo(
             0,
             Math.max(

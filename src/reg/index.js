@@ -17,7 +17,6 @@ async function main() {//функция которая будет точкой �
         return location.href = '/profile.html';
     }
     regButton.addEventListener('click', validate);
-
 }
 
 function validate() {

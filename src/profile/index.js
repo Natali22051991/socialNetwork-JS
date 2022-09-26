@@ -44,7 +44,6 @@ async function main() { //инициализация user и profile
     // profile.friend = false;
     // profile.request = false;
 
-    // console.log({ user, profile });
     //инициализация данных пользователя
     fieldAvatarImg.src = profile.user.img;
     fieldStatusSmall.textContent = profile.user.status;

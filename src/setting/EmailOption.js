@@ -2,8 +2,6 @@ import FormSegment from "../FormSegment.js";
 import { isEmail } from "../util.js";
 import Option from "./Option.js";
 
-
-
 class Emailoption extends Option {//наследует все из Option
 
     constructor(email) {//чтобы взять почту,передаем ее сюда

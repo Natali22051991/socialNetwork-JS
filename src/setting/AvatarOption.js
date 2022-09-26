@@ -20,7 +20,6 @@ class AvatarOption extends Option {
         avatarSegment.setValid();
 
         return true;
-
     }
 
     //PATCH/api/user/avatar

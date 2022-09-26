@@ -21,7 +21,6 @@ export async function session(unauthenticatedCallback = () => { }) { // отпр
 
 //GET/api/user/:userId
 export async function getProfile(userId) { // отправить запрос
-
     try {
         const response = await fetch(`/api/user/${userId}`, { method: "GET" }); // получаем ответ есть ли сессия
         if (response) {

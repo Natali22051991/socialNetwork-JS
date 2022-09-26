@@ -38,7 +38,6 @@ class Message {//будет хранить в себе информацию о �
     }
 }
 export default Message;
-
 /**
  *  {
       "id": "cl8cqtpxh0000dcur0d6bdy7v",

@@ -45,4 +45,5 @@ class Option extends EventEmitter {//так как он будет имитир�
         // console.log(111, this.code);
     }
 }
+
 export default Option;

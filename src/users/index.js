@@ -3,7 +3,6 @@ import "../initExit.js";
 const usersListDiv = document.querySelector('[data-sigment="userslist"]');
 
 main();
-
 async function main() {
     try {
         const response = await fetch('/api/users', { method: "GET" });

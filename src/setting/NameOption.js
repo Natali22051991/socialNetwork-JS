@@ -1,7 +1,6 @@
 import FormSegment from "../FormSegment.js";
 import Option from "./Option.js";
 
-
 class NameOption extends Option {
     constructor(name, surname) {
         super('Имя / Фамилия', 'name');

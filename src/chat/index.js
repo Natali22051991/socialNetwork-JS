@@ -8,7 +8,6 @@ import Chatlist from "./Chatlist.js";
 const chatListDiv = document.querySelector('[data-segment="chatlist"]');
 
 main();
-
 async function main() {
     const user = await session(() => location.href = '/');
     const socket = new io({ path: "/api/chat" });//объект в котором указать путь:

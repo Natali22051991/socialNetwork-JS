@@ -37,4 +37,5 @@ class StatusOption extends Option {
         }
     }
 }
+
 export default StatusOption;
