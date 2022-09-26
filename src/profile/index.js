@@ -25,7 +25,7 @@ const { format } = new Intl.DateTimeFormat('ru-RU', {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
-})
+});
 
 main();
 async function main() { //инициализация user и profile
@@ -36,6 +36,7 @@ async function main() { //инициализация user и profile
         const userId = parseInt(sp.get('userId', 10));//если есть мы его забираем, распасить делаем, тк все хранитсяв строчку
         profile = await getProfile(userId); // если есть юзер, так же получаем его профиль
     } else if (user) {//если нет юзера айди 
+        console.log(user);
         profile = await getProfile(user.id);//получаем по сессии профайл
     } else {
         return (location.href = "/");
@@ -359,3 +360,4 @@ async function savePost() {
         }
     }
 }
+

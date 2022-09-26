@@ -1,47 +1,84 @@
+import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
 import { session, getProfile } from "./util.js";
-const menuDiv = document.querySelector('[data-sigment="menu"]');
+
+
+const menuDiv = document.querySelector('.col-3');
+
+const notificationSpan = document.querySelector('[data-field="notification"]');
+
+let socket = null;
 
 main();
+
 async function main() {
+
     if (!menuDiv) {
+        console.log(menuDiv);
         return;
     }
-    const user = await session();// вызываем сессию
-    if (user) {//если сессия существует
-        // console.log(user);
-        menuDiv.classList.remove('invisible');
+
+    const user = await session();
+
+    if (user) {
+        console.log(user);
+        console.log(menuDiv);
+        menuDiv.classList.remove("invisible");
     } else {
-        menuDiv.classList.add('invisible');
+        menuDiv.classList.add("invisible");
     }
 
     const { pathname } = location;
-    let activMenuItemTag = null;
-    if (pathname === '/profile.html') {
+    let activeMenuItemTag = null;
+
+    if (pathname === "./profile.html") {
         const sp = new URLSearchParams(location.search);
-        if (sp.has("userId")) {// посмотреть что делает этот метод
+
+        if (sp.has("userId")) {
             const userId = parseInt(sp.get("userId"), 10);
             const profile = await getProfile(userId);
+
             if (profile.user.id === user.id) {
-                activMenuItemTag = 'profile';
+                activeMenuItemTag = "profile";
             }
         } else {
-            activMenuItemTag = 'profile';
+            activeMenuItemTag = "profile";
         }
-
-    } else if (pathname === '/friends.html') {
-        activMenuItemTag = 'friends';
-    } else if (pathname === '/chat.html') {
-        activMenuItemTag = 'chat';
-    } else if (pathname === '/setting.html') {
-        activMenuItemTag = 'setting';
+    } else if (pathname === "/firends.html") {
+        activeMenuItemTag === "friends";
+    } else if (pathname === "/chat.html") {
+        activeMenuItemTag = "chat";
+    } else if (pathname === "/setting.html") {
+        activeMenuItemTag = "setting";
     }
-    const menuItems = document.querySelectorAll('[data-menuitem]');
+
+    const menuItems = document.querySelectorAll("[data-menuitem]");
     for (const menuItem of menuItems) {
-        menuItem.classList.remove('active');
+        menuItem.classList.remove("active");
     }
 
-    const menuItem = document.querySelector(`[data-menuitem ="${activMenuItemTag}"]`); // посмотреть как встраивается 
+    const menuItem = document.querySelector(
+        `[data-menuitem="${activeMenuItemTag}"]`
+    );
+
     if (menuItem) {
-        menuItem.classList.add('active');
+        menuItem.classList.add("active");
+    }
+
+    socket = new io({ path: "/api/notification" });
+    socket.on("status", handler);
+}
+
+function handler(flag) {
+    if (flag) {
+        notificationSpan.classList.remove("d-none");
+    } else {
+        notificationSpan.classList.add("d-none");
     }
 }
+
+export function read(messageId) {
+    socket.emit("status", messageId, handler);
+}
+
+const body = document.querySelector('body')
+console.log(body);
