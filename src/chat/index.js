@@ -1,34 +1,27 @@
 import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
 import "../initExit.js";
 import { session } from "../util.js";
-
 import "../initMenu.js";
 import Chat from "./Chat.js";
 import Chatlist from "./Chatlist.js";
 
 const chatListDiv = document.querySelector('[data-segment="chatlist"]');
 
-
 main();
 
 async function main() {
     const user = await session(() => location.href = '/');
-
     const socket = new io({ path: "/api/chat" });//объект в котором указать путь:
-    console.log(socket);
-
     const sp = new URLSearchParams(location.search)//соч параметр
+
     if (sp.has('userId')) {//если у нас есть соч параметр
         const friendId = parseInt(sp.get('userId'), 10);//забираем параметр
         const chat = new Chat(user);//чтобы реализовать сенарий
 
         socket.emit('getChat', friendId, ({ friend, messages }) => {// у сокет соединения есть возможность отправлять запросы, возвращать и когда он будет принимать сообщение
-            // console.log(messages);
             //мы будем отправлять в экземпляр класса
             chat.friend = friend;
             chat.addMessage(...messages);
-            console.log(chat);
-
             // document.body.append(chat.messages[0].div)
             // document.body.append(chat.messages[1].div)
         });
@@ -55,9 +48,6 @@ async function main() {
         chatListDiv.innerHTML = '';
         chatListDiv.append(chatList.ul)
         chatListDiv.classList.remove('d-none');
-
         chatList.on('select', (friendId) => location.href = `/chat.html?userId=${friendId}`);
     }
-
-
 }

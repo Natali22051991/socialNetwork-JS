@@ -1,7 +1,10 @@
+import FormSegment from "../FormSegment.js";
 import { isEmail, session } from "../util.js";
-const igroupEmail = document.querySelector('[data-igroup="email"]');
-const igroupPassword = document.querySelector('[data-igroup="password"]');
+
 const enterButton = document.querySelector('[data-action="enter"]');
+
+const emailSegment = new FormSegment('email');
+const passwordSegment = new FormSegment('password');
 
 main();
 
@@ -11,42 +14,42 @@ async function main() {
         return location.href = '/profile.html';
     }
     enterButton.addEventListener('click', validate);
+
+    emailSegment.input.addEventListener('keydown', (e) => {
+        if (e.code === 'Enter') {
+            passwordInput.focus();
+        }
+    });
+
+    passwordSegment.input.addEventListener('keydown', (e) => {
+        if (e.code === 'Enter') {
+            validate();
+        }
+    });
 }
 
 function validate() {
     let flag = true;
     //почта
-    const emailFormFloating = igroupEmail.querySelector('.form-floating');
-    const emailInput = igroupEmail.querySelector('input');
-    const email = emailInput.value.trim();
-    emailFormFloating.classList.remove('is-valid', 'is-invalid');
-    emailInput.classList.remove('is-valid', 'is-invalid');
+    const email = emailSegment.input.value;
+    emailSegment.ressetValid();
 
     if (!isEmail(email)) {
         flag = false;
-        emailFormFloating.classList.add("is-invalid");
-
-        emailInput.classList.add('is-invalid');
+        emailSegment.setInvalid('Нужно указать почту.');
 
     } else {
-        emailFormFloating.classList.add("is-valid");
-
-        emailInput.classList.add('is-valid');
+        emailSegment.setValid();
     }
     //пароль
-    const passwordFormFloating = igroupPassword.querySelector('.form-floating');
-    const passwordInput = igroupPassword.querySelector('input');
-    const password = passwordInput.value;
-    passwordFormFloating.classList.remove('is-valid', 'is-invalid');
-    passwordInput.classList.remove('is-valid', 'is-invalid');
+    passwordSegment.ressetValid();
+    const password = passwordSegment.input.value;
 
     if (password.length < 3) {
         flag = false;
-        passwordFormFloating.classList.add('is-invalid');
-        passwordInput.classList.add('is-invalid');
+        passwordSegment.setInvalid('Пароль должен состоять минимум из 3-х символов.')
     } else {
-        passwordFormFloating.classList.add('is-valid');
-        passwordInput.classList.add('is-valid');
+        passwordSegment.ressetValid();
     }
     if (flag) {
         enter();
@@ -54,18 +57,13 @@ function validate() {
 }
 async function enter() {
     //сброс классов почта
-    const emailFormFloating = igroupEmail.querySelector('.form-floating');
-    const emailInput = igroupEmail.querySelector('input');
-    const email = emailInput.value.trim();
-    emailFormFloating.classList.remove('is-valid', 'is-invalid');
-    emailInput.classList.remove('is-valid', 'is-invalid');
+    const email = emailSegment.input.value.trim();
+    emailSegment.ressetValid();
     //пароль
-    const passwordFormFloating = igroupPassword.querySelector('.form-floating');
-    const passwordInput = igroupPassword.querySelector('input');
-    const password = passwordInput.value;
-    passwordInput.value = '';
-    passwordFormFloating.classList.remove('is-valid', 'is-invalid');
-    passwordInput.classList.remove('is-valid', 'is-invalid');
+
+    const password = passwordSegment.input.value;
+    passwordSegment.input.value = '';
+    passwordSegment.ressetValid();
 
     const data = new FormData();
     data.append('email', email);

@@ -1,5 +1,6 @@
-import { session } from "../util.js";
 import "../initExit.js";
+import { session } from "../util.js";
+
 import "../initMenu.js";
 
 
@@ -14,7 +15,7 @@ const selectDiv = document.querySelector('[data-segment="select"]');
 main();
 
 async function main() {
-    const user = await session(() => location.href = "/");// вызываем сессию, если ее нет отправляем на главную страницу
+    const user = await session(() => (location.href = "/"));// вызываем сессию, если ее нет отправляем на главную страницу
     const select = new Select();//создадим экземпляр с классом Select
     select.add(new Emailoption(user.email));//передаем пользователя почту
     select.add(new NameOption(user.name, user.surname));//select.add(new Option('Имя/Фамилия', 'name'));
